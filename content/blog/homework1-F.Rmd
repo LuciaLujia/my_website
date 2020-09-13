@@ -1,12 +1,8 @@
 ---
-challenge: Study Group 10
-client: Jane Doe
-date: "2020-09-06"
-service: Data Analytics
-shortDescription: xx
-solution: xx
-thumbnail: images/portfolio/0.png
-title: homework 1
+date: "2020-09-04"
+featureImage: images/allpost/homework1.jpg
+postImage: images/single-blog/0.jpg
+title: Homework 1
 ---
 
 ```{r, setup, echo=FALSE}
@@ -157,7 +153,7 @@ Let's load the data and have a look at it!
   
 ```{r load_inspect_movies, warning=FALSE, message=FALSE}
 
-movies <- read_csv(here::here("data", "movies.csv"))
+movies <- read_csv(here::here("project_data", "movies.csv"))
 glimpse(movies)
 skim(movies)
 
@@ -400,7 +396,7 @@ But in order to download the financial data, we first have to consider the mappi
 
 
 ```{r load_nyse_data, message=FALSE, warning=FALSE}
-nyse <- read_csv(here::here("data","nyse.csv"))
+nyse <- read_csv(here::here("project_data","nyse.csv"))
 ```
 
 
@@ -548,7 +544,7 @@ First, let us load the data.
 
 ```{r}
 
-hr_dataset <- read_csv(here::here("data", "datasets_1067_1925_WA_Fn-UseC_-HR-Employee-Attrition.csv"))
+hr_dataset <- read_csv(here::here("project_data", "datasets_1067_1925_WA_Fn-UseC_-HR-Employee-Attrition.csv"))
 
 ```
 
@@ -886,7 +882,7 @@ knitr::include_graphics(here::here("images", "figure3.jpeg"), error = FALSE)
 Replication:
 
 ```{r, fig.width=7.5, fig.height=7.5}
-CDC_data <- read_csv(here::here("data", "CDC_Males.csv"))
+CDC_data <- read_csv(here::here("project_data", "CDC_Males.csv"))
 
 CDC_data %>% 
   filter(type == "Firearm") %>% # only firearm related suicides / homicides relevant
@@ -931,8 +927,8 @@ knitr::include_graphics(here::here("images", "challenge2.png"), error = FALSE)
 
 ```{r load_CA_data, warnings= FALSE, message=FALSE}
 
-CA_contributors_2016 <- vroom::vroom(here::here("data","CA_contributors_2016.csv"))
-zip_code_database <- read_csv(here::here("data","zip_code_database.csv"), 
+CA_contributors_2016 <- vroom::vroom(here::here("project_data","CA_contributors_2016.csv"))
+zip_code_database <- read_csv(here::here("project_data","zip_code_database.csv"), 
                               col_types = cols(zip = col_double()))
 
 ```

@@ -6,13 +6,54 @@
     <description>Recent content in Recents Article on Portio</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 13 Jul 2020 13:06:26 +0600</lastBuildDate>
+    <lastBuildDate>Fri, 11 Sep 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Designer Conference at Florida 2020</title>
+      <title>Homework 2</title>
+      <link>/blog/homework2/</link>
+      <pubDate>Fri, 11 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/homework2/</guid>
+      <description>Climate change and temperature anomaliesWe want to study climate change and gratefully find data on the Combined Land-Surface Air and Sea-Surface Water Temperature Anomalies in the Northern Hemisphere at NASA’s Goddard Institute for Space Studies. The tabular data of temperature anomalies can be found here.
+To define temperature anomalies, we need to have a reference, or base period, which NASA clearly states that it is the period between 1951-1980.</description>
+    </item>
+    
+    <item>
+      <title>Homework 3</title>
+      <link>/blog/homework3/</link>
+      <pubDate>Fri, 11 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/homework3/</guid>
+      <description>Youth Risk Behavior SurveillanceEvery two years, the Centers for Disease Control and Prevention conduct the Youth Risk Behavior Surveillance System (YRBSS) survey, where it takes data from high schoolers (9th through 12th grade), to analyze health patterns.
+We will work with a selected group of variables from a random sample of observations during one of the years the YRBSS was conducted.
+Load the dataThis data is part of the openintro textbook and we can directly load and inspect it:</description>
+    </item>
+    
+    <item>
+      <title>Homework 1</title>
+      <link>/blog/homework1-f/</link>
+      <pubDate>Fri, 04 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/homework1-f/</guid>
+      <description>Where Do People Drink The Most Beer, Wine And Spirits?Back in 2014, fivethiryeight.com published an article on alcohol consumption in different countries. The data drinks is available as part of the fivethirtyeight package. Let’s load the data and have a look!
+library(fivethirtyeight)data(drinks)To get an idea of what the data is like, we use glimpse and skim. Furthermore, we can use ?drinks to get some more meta information.</description>
+    </item>
+    
+    <item>
+      <title>NYT Mask Use Acceptance</title>
+      <link>/blog/nyt_masks/</link>
+      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/nyt_masks/</guid>
+      <description>NYT mask useGithub source for data https://github.com/nytimes/covid-19-data/tree/master/mask-use
+Getting the data#Source for data url &amp;lt;- &amp;quot;https://github.com/nytimes/covid-19-data/raw/master/mask-use/mask-use-by-county.csv&amp;quot;nyt_mask_survey &amp;lt;- read_csv(url)# here::here(&amp;quot;data&amp;quot;, &amp;quot;nyt_mask_survey.csv&amp;quot;)nyt_mask_survey &amp;lt;- nyt_mask_survey %&amp;gt;%clean_names() %&amp;gt;% mutate(mostly_yes= frequently+always,mostly_no = never+rarely,delta = mostly_yes-mostly_no)glimpse(nyt_mask_survey)## Rows: 3,142## Columns: 9## $ countyfp &amp;lt;chr&amp;gt; &amp;quot;01001&amp;quot;, &amp;quot;01003&amp;quot;, &amp;quot;01005&amp;quot;, &amp;quot;01007&amp;quot;, &amp;quot;01009&amp;quot;, &amp;quot;01011&amp;quot;, &amp;quot;0...## $ never &amp;lt;dbl&amp;gt; 0.053, 0.083, 0.067, 0.020, 0.053, 0.031, 0.102, 0.</description>
+    </item>
+    
+    <item>
+      <title>Theme Example - Designer Conference at Florida 2020</title>
       <link>/blog/designer-conference-at-florida-2020/</link>
       <pubDate>Mon, 13 Jul 2020 13:06:26 +0600</pubDate>
       
@@ -21,7 +62,7 @@
     </item>
     
     <item>
-      <title>Benjamin Franklins thoughts about new designers</title>
+      <title>Theme Example - Benjamin Franklins thoughts about new designers</title>
       <link>/blog/benjamin-franklins-thoughts-about-new-designers/</link>
       <pubDate>Mon, 13 Jul 2020 12:49:27 +0600</pubDate>
       
@@ -30,7 +71,7 @@
     </item>
     
     <item>
-      <title>Designers thoughts about mobile UI</title>
+      <title>Theme Example - Designers thoughts about mobile UI</title>
       <link>/blog/designers-thoughts-about-mobile-ui/</link>
       <pubDate>Mon, 13 Jul 2020 12:49:27 +0600</pubDate>
       
@@ -39,7 +80,7 @@
     </item>
     
     <item>
-      <title>How to become acreative designer</title>
+      <title>Theme Example - How to become acreative designer</title>
       <link>/blog/how-to-become-acreative-designer/</link>
       <pubDate>Mon, 13 Jul 2020 12:49:27 +0600</pubDate>
       
@@ -48,7 +89,7 @@
     </item>
     
     <item>
-      <title>Learning from experience</title>
+      <title>Theme Example - Learning from experience</title>
       <link>/blog/learning-from-experience/</link>
       <pubDate>Mon, 13 Jul 2020 12:49:27 +0600</pubDate>
       
@@ -57,7 +98,7 @@
     </item>
     
     <item>
-      <title>New designers limitations</title>
+      <title>Theme Example - New designers limitations</title>
       <link>/blog/new-designers-limitations/</link>
       <pubDate>Mon, 13 Jul 2020 12:49:27 +0600</pubDate>
       
@@ -66,7 +107,7 @@
     </item>
     
     <item>
-      <title>Things you must know as a designer</title>
+      <title>Theme Example - Things you must know as a designer</title>
       <link>/blog/things-you-must-know-as-a-designer/</link>
       <pubDate>Mon, 13 Jul 2020 12:49:27 +0600</pubDate>
       
@@ -75,7 +116,7 @@
     </item>
     
     <item>
-      <title>World&#39;s Most Famous App Developers and Designers</title>
+      <title>Theme Example - World&#39;s Most Famous App Developers and Designers</title>
       <link>/blog/world-most-famous-app-developers-and-designers/</link>
       <pubDate>Mon, 13 Jul 2020 12:49:27 +0600</pubDate>
       
@@ -84,23 +125,12 @@
     </item>
     
     <item>
-      <title>You must know this before becoming a designer</title>
+      <title>Theme Example - You must know this before becoming a designer</title>
       <link>/blog/you-must-know-this-before-becoming-a-designer/</link>
       <pubDate>Mon, 13 Jul 2020 12:49:27 +0600</pubDate>
       
       <guid>/blog/you-must-know-this-before-becoming-a-designer/</guid>
       <description>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
-    </item>
-    
-    <item>
-      <title>Hello R Markdown</title>
-      <link>/blog/2015-07-23-r-rmarkdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      
-      <guid>/blog/2015-07-23-r-rmarkdown/</guid>
-      <description>R MarkdownThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
     </item>
     
   </channel>

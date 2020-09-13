@@ -8,18 +8,18 @@ title = "Portio"
     name = "Home"
     url = "#home"
     weight = 1
-  [[menu.main]]
-    name = "About"
-    url = "#about"
-    weight = 2
-  [[menu.main]]
-    name = "Service"
-    url = "#service"
-    weight = 3
-  [[menu.main]]
-    name = "Work"
-    url = "#portfolio"
-    weight = 4
+#  [[menu.main]]
+#    name = "About"
+#    url = "#about"
+#    weight = 2
+#  [[menu.main]]
+#    name = "Service"
+#    url = "#service"
+#    weight = 3
+#  [[menu.main]]
+#    name = "Work"
+#    url = "#portfolio"
+#    weight = 4
   [[menu.main]]
     name = "Resume"
     url = "#resume"
@@ -36,37 +36,38 @@ title = "Portio"
   # Sitemap Menu
   [[menu.sitemap]]
     name = "About me"
-    url = "about"
+    url = "home"
     weight = 1
-  [[menu.sitemap]]
-    name = "Frequently Ask Question"
-    url = "#"
-    weight = 2
-  [[menu.sitemap]]
-    name = "Privacy & Policy"
-    url = "#"
-    weight = 3
+#  [[menu.sitemap]]
+#    name = "Frequently Ask Question"
+#    url = "#"
+#    weight = 2
+#  [[menu.sitemap]]
+#    name = "Privacy & Policy"
+#    url = "#"
+#    weight = 3
   [[menu.sitemap]]
     name = "Latest Article"
-    url = "#"
+    url = "blog"
     weight = 4
 
 [params]
   blogPageURL = "blog"
   contactLink = "contact"
-  copyright = "All right reserved copyright © Portio 2020"
+#  copyright = "All right reserved copyright © Portio 2020"
   footerLogo = "images/contact/widget-logo.png"
   formspreeURL = "YOUR FORMSPREE URL"
   googleAnalytics = "YOUR GOOGLE ANALYTICS CODE"
   logo = "images/site-navigation/logo.png"
 
   [params.address]
-    address = "23 Khan Niketon, Grand Street, NYK."
-    email = "hello@example.com"
-    openingHours = "Open from 10am to 6pm (close at 5pm Sundays)"
-    phone = "+(448) 833 5272 332"
+    address = "London Business School, Regent's Park, London, United Kingdom"
+    email = "lhuang.mam2021@london.edu"
+    openingHours = "10am to 6pm"
+    phone = "+44 (0)20 7000 7000"
+
   [params.map]
-    APIkey = "YOUR GOOGLE MAP API"
-    latitude = "23.7783741"
-    longitude = "90.3746808"
+    APIkey = "AIzaSyB2JuE_JhKjvzQsSxuV8p7XD-fq2uzLgGk"
+    latitude = "51.526155"
+    longitude = "-0.160668"
     pinImage = "images/pin.png"

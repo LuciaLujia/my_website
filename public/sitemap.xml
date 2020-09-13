@@ -3,12 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/portfolio/</loc>
-    <lastmod>2020-08-12T18:19:35+06:00</lastmod>
+    <loc>/blog/homework2/</loc>
+    <lastmod>2020-09-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/homework3/</loc>
+    <lastmod>2020-09-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/</loc>
+    <lastmod>2020-09-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/</loc>
+    <lastmod>2020-09-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/homework1-f/</loc>
+    <lastmod>2020-09-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/nyt_masks/</loc>
+    <lastmod>2020-09-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/portfolio/</loc>
     <lastmod>2020-08-12T18:19:35+06:00</lastmod>
   </url>
   
@@ -33,17 +58,12 @@
   </url>
   
   <url>
-    <loc>/blog/</loc>
-    <lastmod>2020-07-13T13:06:26+06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/benjamin-franklins-thoughts-about-new-designers/</loc>
+    <loc>/portfolio/case-study-one/</loc>
     <lastmod>2020-07-13T12:49:27+06:00</lastmod>
   </url>
   
   <url>
-    <loc>/portfolio/case-study-one/</loc>
+    <loc>/blog/benjamin-franklins-thoughts-about-new-designers/</loc>
     <lastmod>2020-07-13T12:49:27+06:00</lastmod>
   </url>
   
@@ -84,41 +104,14 @@
   
   <url>
     <loc>/categories/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/2015-07-23-r-rmarkdown/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/plot/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/r/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/r-markdown/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/regression/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
   </url>
   
   <url>
     <loc>/contact/</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
   </url>
   
 </urlset>

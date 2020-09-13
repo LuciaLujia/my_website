@@ -2,8 +2,8 @@
 enable: true
 topTitle: My Resume
 title: My Expertises
-subtitle: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
-subsubtitle: Magna aliquyam erat, sed diam voluptua. At vero eos accusam justo.
+subtitle: Click the buttons below to see my education and professional background :-)
+subsubtitle: 
 
 tab1Name: Education
 tab2Name: Experiences
@@ -11,35 +11,44 @@ tab1Target: education
 tab2Target: experience
 
 education:
-  - title: Master in Arts
-    content: Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-    time: 2008-2010
-  - title: Master in Arts
-    content: Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-    time: 2008-2010
-  - title: Master in Arts
-    content: Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-    time: 2008-2010
-  - title: Master in Arts
-    content: Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-    time: 2008-2010
-  - title: Master in Arts
-    content: Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-    time: 2008-2010
+  - title: Master of Science in Analytics and Management, London Business School
+    content: The MAM program focuses on the point where business, data, and machine learning intersect. Core courses include Analytics & Data Science, and General Management.
+    time: 2020-2021/2022
+  - title: Bachelor of Business Administration in Entrepreneurship and Technology, Exchange at UC Berkeley Haas
+    content: Through the Berkeley Haas Global Access Program (BHGAP), top-qualifying international students from both business and non-business backgrounds gain the knowledge, skills and connections necessary to excel as tomorrow's innovators and global leaders. 
+    time: 2019
+  - title: Bachelor of Business Administration in Accounting, Beijing Foreign Studies University
+    content: Relevant courses include Math, Programming, Analytics, Accounting, Finance, Economics, Management, Marketing and Languages (English, Hebrew).
+    time: 2016-2020
+  - title: High School Diploma in Science, Xiamen No.1 High School of Fujian
+    content: Relevant courses include Math, Physics, Chemistry, Biology, Chinese, and English.
+    time: 2013-2016
+#  - title: Master in Arts
+#    content: Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+#    time: 2008-2010
 
 experience:
-  - title: experience
-    content: Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-    time: 2008-2010
-  - title: experience
-    content: Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-    time: 2008-2010
-  - title: experience
-    content: Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-    time: 2008-2010
-  - title: experience
-    content: Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-    time: 2008-2010
-  - title: experience
-    content: Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-    time: 2008-2010
+  - title: Aha Club (A startup)
+    content: Data Analytics Business Unit Lead
+    time: Jul 2020 - Present
+  - title: SEO-China (NGO for underprivileged students)
+    content: Volunteering Career Coach
+    time: Sep 2019 - Present
+  - title: Microsoft
+    content: Strategy Analyst Intern
+    time: Jul 2020 - Sep 2020
+  - title: DiDi
+    content: Product Manager Intern with return offer
+    time: Mar 2020 - Jul 2020
+  - title: A Better Community (Largest impact consulting provider in China)
+    content: Volunteering Project Consultant
+    time: Sep 2018 - Jul 2020
+  - title: ByteDance
+    content: Business Analyst Intern
+    time: Oct 2019 - Mar 2020
+  - title: Amazon Web Services
+    content: Business Data Analyst Intern with return offer
+    time: Jun 2019 - Oct 2019
+  - title: Sky Saga Capital
+    content: Investment Analyst Intern
+    time: Jul 2018 - Nov 2018

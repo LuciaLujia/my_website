@@ -2,12 +2,12 @@
 enable: true
 topTitle: My Skills
 title: Why hire me for your next project?
-subtitle: My goal is to build a strong supportive professional network among all freelancers and startups in order to improve their performance.
+subtitle: TBD
 
 skill:
-  - title: HTML
-    percent: 69
-  - title: CSS
-    percent: 60
-  - title: Javascript
-    percent: 85
+  - title: Leadership
+    percent: 90
+  - title: Business Analytics (R, Python, Tableau..)
+    percent: 70
+  - title: Strategy Analysis
+    percent: 80
