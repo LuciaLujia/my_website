@@ -1,8 +1,8 @@
 ---
-date: "2020-09-04"
+date: "2020-09-01"
 featureImage: images/allpost/homework1.jpg
 postImage: images/single-blog/0.jpg
-title: Homework 1
+title: Draft - Homework 1
 ---
 
 ```{r, setup, echo=FALSE}

@@ -1,0 +1,174 @@
+---
+date: "2020-09-04"
+featureImage: images/allpost/wine_plot-1.png
+postImage: images/single-blog/0.jpg
+title: Easy Level - Alcohol Consumption in Different Countries
+---
+
+_Team members: Noor Alameri, Brigita Angkasa, Lujia Huang, Martino Armanini, Marco Laube, Deniz Oezdemir_
+
+_Source: Homework 1 for [**Applied Statistics with R**](https://mam2021.netlify.app/) by Kostis @ London Business School_
+
+_Key Words: skim, glimpse, ggplot_
+```{r, setup, echo=FALSE}
+knitr::opts_chunk$set(
+  message = FALSE, 
+  warning = FALSE, 
+  tidy=FALSE,     # display code as typed
+  size="small")   # slightly smaller font for code
+options(digits = 3)
+
+# default figure size
+knitr::opts_chunk$set(
+  fig.width=6.75, 
+  fig.height=6.75,
+  fig.align = "center"
+)
+```
+
+```{r load-libraries, warning=FALSE, message=FALSE, echo=FALSE}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(mosaic)
+library(ggthemes)
+library(lubridate)
+library(fivethirtyeight)
+library(here)
+library(skimr)
+library(janitor)
+library(vroom)
+library(tidyquant)
+library(kableExtra)
+
+options(scipen=200)
+```
+
+# Where Do People Drink The Most Beer, Wine And Spirits?
+<br/>
+Back in 2014, [fivethiryeight.com](https://fivethirtyeight.com/features/dear-mona-followup-where-do-people-drink-the-most-beer-wine-and-spirits/) published an article on alcohol consumption in different countries. The data `drinks` is available as part of the `fivethirtyeight` package. Let's load the data and have a look!
+```{r load_alcohol_data}
+library(fivethirtyeight)
+data(drinks)
+```
+<br/>
+To get an idea of what the data is like, we use `glimpse` and `skim`. Furthermore, we can use `?drinks` to get some more meta information.
+```{r glimpse_data}
+# ?drinks
+
+# Get a glimpse of your data, esp. variables
+glimpse(drinks)
+```
+<br/>
+```{r skim_data}
+#Skim a data frame, getting useful summary statistics
+skim(drinks)
+```
+<br/>
+<br/>
+We find out that we deal with a table with 193 rows, where each row represents one specific `country`. The country names are saved by their English names, which is why the variable `country` is of type `character`.
+
+Additionally, we have three columns `beer_servings`, `spirit_servings` and `wine_servings` of type `integer` (i.e. numeric values), that save the servings of beer, spirits and wine in average serving sizes per person.
+
+Finally, we have a `double` variable `total_litres_of_pure_alcohol`, which measures the total litres of pure alcohol consumed per person.  
+
+With the help of the `skim` output we can see that there are no missing values in any column (look for `n_missing`).  
+
+Having understood the structure of our data, we can proceed to actually answer our question of where people do drink the most wine, beer and spirits. Please have a look at the following graphs.
+
+```{r beer_plot}
+
+# filter for the top 25 beer consuming countries
+top_25_beer <- drinks %>% 
+  top_n(25, beer_servings) 
+
+ggplot(top_25_beer, 
+       aes(x = beer_servings,
+           
+           # reorder bars by beer servings
+           y = reorder(country, beer_servings))) + 
+  
+  # color of bars represents the color of a nice beer
+  geom_col(fill = "goldenrod2") + 
+  
+  labs(title = "Namibian people drink more beer than anybody else!",
+       subtitle = "Beer consumption per country.",
+       caption = "Source: Dear Mona Followup: Where Do People Drink The Most Beer, Wine And Spirits?",
+       x = "Servings of beer in average serving sizes per person",
+       y = "Country") +
+  
+  NULL
+
+```
+
+
+```{r wine_plot}
+
+# filter for the top 25 wine consuming countries
+top_25_wine <- drinks %>% 
+  top_n(25, wine_servings) 
+
+ggplot(top_25_wine, 
+       aes(x = wine_servings,
+           
+           # reorder bars by wine servings
+           y = reorder(country, wine_servings))) +
+  
+  # color of bars represents the color of a nice red wine
+  geom_col(fill = "red4") + 
+  
+  labs(title = "French people are the greatest wine enthusiasts!",
+       subtitle = "Wine consumption per country.",
+       caption = "Source: Dear Mona Followup: Where Do People Drink The Most Beer, Wine And Spirits?",
+       x = "Servings of wine in average serving sizes per person",
+       y = "Country") +
+  
+  NULL
+
+```
+
+
+```{r spirits_plot}
+
+# filter for the top 25 spirits consuming countries
+top_25_spirits <- drinks %>% 
+  top_n(25, spirit_servings) 
+
+ggplot(top_25_spirits, 
+       aes(x = spirit_servings,
+           
+           # reorder bars by spirits servings
+           y = reorder(country, spirit_servings))) + 
+  
+  # color of bars represents the color of a nice vodka
+  geom_col(fill = "white", color = "black") + 
+  
+  labs(title = "The Caribbean and the Eastern Bloc top the spirits list!",
+       subtitle = "Spirits consumption per country.",
+       caption = "Source: Dear Mona Followup: Where Do People Drink The Most Beer, Wine And Spirits?",
+       x = "Servings of spirits in average serving sizes per person",
+       y = "Country") +
+  
+  NULL
+
+```
+
+Regarding the consumption of beer, we expected to see Germany, Poland and the Czech Republic at the top of the list, as they are well known for their beer culture. However, at first glance it is quite surprising that Namibia and Gabon are on the winners' podium.
+
+For Namibia, one explanation could be that it was a German colony for a long time. But an even more persuasive argument, that also applies to Gabon, is that both countries mainly consume alcohol in the form of beer:
+
+```{r african_beer_inspection}
+
+drinks %>% 
+  filter(country == "Gabon" | country == "Namibia") %>% 
+  
+  #make a readable HTML table
+  kbl() %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+
+```
+<br/>
+So as supplies in spirits and wine are (probably) low, they fall back on beer.  
+Finally, Namibia has numerous beer-filled events throughout the year and has a fast growing emerging crafting beer market, which support the fact that it is the country with the highest beer servings.
+
+Regarding the consumption of wine, there are no real surprisings. Drinking wine is in the heart of the local culture in France. On top of that, wine is also associated with tradition and sophistication of French culture.  
+
+Finally, the Russian Federation and Eastern Europe are well known for their huge consumption of Vodka. But we also see that countries in the Caribbean drink quite a lot of spirits! This is probably because of the liquid gold of the Caribbean: Rum.

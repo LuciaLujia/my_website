@@ -1,0 +1,464 @@
+---
+date: "2020-09-11"
+featureImage: images/allpost/ggs.png
+postImage: images/single-blog/0.jpg
+title: Intermediate - General Social Survey of American Media & Email Usage
+---
+
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+<link href="/rmarkdown-libs/lightable/lightable.css" rel="stylesheet" />
+
+
+<p><em><strong>Team members:</strong> Noor Alameri, Brigita Angkasa, Lujia Huang, Martino Armanini, Marco Laube, Deniz Oezdemir</em></p>
+<p><em><strong>Source:</strong> Homework 2 for <a href="https://mam2021.netlify.app/">Applied Statistics with R</a> by Kostis @ London Business School</em></p>
+<p><em><strong>Key Words:</strong> skim, glimpse, ggplot, summarise, mutate, geom_errorbar, confidence intervals</em></p>
+<div id="general-social-survey-gss" class="section level1">
+<h1>General Social Survey (GSS)</h1>
+<p><br/>
+The <a href="http://www.gss.norc.org/">General Social Survey (GSS)</a> gathers data on American society in order to monitor and explain trends in attitudes, behaviours, and attributes. Many trends have been tracked for decades, so one can see the evolution of attitudes, etc in American Society.</p>
+<p>Let’s load this intersting data for the year 2016:</p>
+<pre class="r"><code># read the data from database and define NA
+gss &lt;- read_csv(here::here(&quot;project_data&quot;, &quot;smallgss2016.csv&quot;), 
+                na = c(&quot;&quot;, &quot;Don&#39;t know&quot;,
+                       &quot;No answer&quot;, &quot;Not applicable&quot;, &quot;NA&quot;))</code></pre>
+<p><br/>
+The variables we have in our data are the following:</p>
+<ul>
+<li>hours and minutes spent on email weekly. The responses to these questions are recorded in the <code>emailhr</code> and <code>emailmin</code> variables.</li>
+<li><code>snapchat</code>, <code>instagrm</code>, <code>twitter</code>: whether respondents used these social media (in 2016)</li>
+<li><code>sex</code>: Female or Male</li>
+<li><code>degree</code>: highest education level attained
+## Instagram and Snapchat, by sex
+<br/>
+We will now estimate the <em>population</em> proportion of Snapchat or Instagram users in 2016:</li>
+</ul>
+<pre class="r"><code># calculate snap_insta, that measures Instagram and Snapchat use in combination
+snap_insta_df &lt;- gss %&gt;%
+  
+  # &quot;Yes&quot; if the respondent reported using any of snapchat or instagrm, and &quot;No&quot; if not. If both NA then also NA.
+  mutate(snap_insta = case_when(snapchat == &quot;Yes&quot; | instagrm == &quot;Yes&quot; ~ &quot;Yes&quot;,
+                                is.na(snapchat) &amp; is.na(instagrm) ~ NA_character_ ,
+                                TRUE ~ &quot;No&quot;))
+
+
+# print overall proportion
+snap_insta_df %&gt;%
+  
+  summarise(`number of instagram/ snapchat users` = count(snap_insta == &quot;Yes&quot;),
+            `number of people who use neither` = count(snap_insta == &quot;No&quot;),
+            `proportion of instagram/ snapchat users` = count(snap_insta == &quot;Yes&quot;)/count(snap_insta %in% c(&quot;Yes&quot;,&quot;No&quot;))) %&gt;%
+  
+  # have a nice HTML table
+  kbl() %&gt;%
+  kable_styling(bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;, &quot;condensed&quot;, &quot;responsive&quot;)) </code></pre>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+number of instagram/ snapchat users
+</th>
+<th style="text-align:right;">
+number of people who use neither
+</th>
+<th style="text-align:right;">
+proportion of instagram/ snapchat users
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+514
+</td>
+<td style="text-align:right;">
+858
+</td>
+<td style="text-align:right;">
+0.375
+</td>
+</tr>
+</tbody>
+</table>
+<p><br/>
+Hence, our best guess is that overall 37.5% of the whole population use instagram, snapchat, or both.</p>
+<p>But it’s always better to not always look at point estimates, but at confidence intervals. As we are also interested in the difference between men and women, we calculate two CIs - on for men, one for women - for the snapchat / instagram proportion with traditional mathematical formulas:</p>
+<pre class="r"><code># calculate CIs for men and women
+sex_formula_ci &lt;- snap_insta_df %&gt;%
+  
+  filter(!is.na(snap_insta)) %&gt;% 
+  
+  # group by sex and calculate CIs
+  group_by(sex) %&gt;%  
+  
+  summarise(`proportion of instagram/ snapchat users` = count(snap_insta == &quot;Yes&quot;)/count(snap_insta %in% c(&quot;Yes&quot;,&quot;No&quot;)),
+            
+            z_critical = qnorm(0.975),
+            
+            count = n(),
+            
+            # Confidence Interval for proportion = p  +/-  z*(√p(1-p) / n)
+            se_proportion = sqrt((`proportion of instagram/ snapchat users`*(1-`proportion of instagram/ snapchat users`))/count),
+            
+            margin_of_error = z_critical * se_proportion,
+            
+            `lower bound` = `proportion of instagram/ snapchat users` - margin_of_error,
+            
+            `upper bound` = `proportion of instagram/ snapchat users` + margin_of_error)
+
+
+# print table with CIs
+sex_formula_ci %&gt;%
+  
+  # only show relevant columns
+  select(sex, `lower bound`, `proportion of instagram/ snapchat users`, `upper bound`) %&gt;% 
+  
+  # have a nice HTML table
+  kbl(caption = &quot;confidence interval on proportion of instagram/snapchat users by sex&quot;) %&gt;%
+  kable_styling(bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;, &quot;condensed&quot;, &quot;responsive&quot;)) </code></pre>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<caption>
+(#tab:snap_insta_CI)confidence interval on proportion of instagram/snapchat users by sex
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+sex
+</th>
+<th style="text-align:right;">
+lower bound
+</th>
+<th style="text-align:right;">
+proportion of instagram/ snapchat users
+</th>
+<th style="text-align:right;">
+upper bound
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+0.384
+</td>
+<td style="text-align:right;">
+0.419
+</td>
+<td style="text-align:right;">
+0.454
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+0.281
+</td>
+<td style="text-align:right;">
+0.318
+</td>
+<td style="text-align:right;">
+0.356
+</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code># plot CIs
+ggplot(sex_formula_ci, 
+       
+       #draws the means
+       aes(y=sex, x = `proportion of instagram/ snapchat users`, group = sex, color=sex)) +
+  
+  geom_point(size = 5) +
+  
+  #draws the CI error bars
+  geom_errorbar(aes(xmin=`lower bound`, xmax=`upper bound`), width=.1, size = 2) +
+  
+  theme_bw() +
+  
+  theme(legend.position = &quot;none&quot;)+
+  
+  labs(title = &quot;Women Spend More Hours on Social Media&quot;,
+       subtitle = &quot;Confidence Intervals of Instagram/Snapchat Usage&quot;)</code></pre>
+<p><img src="/blog/2-General-Social-Survey_files/figure-html/snap_insta_CI-1.png" width="648" style="display: block; margin: auto;" />
+<br/>
+We can clearly see that the data supports the view that many more women use instagram and snapchat than men do!
+## Twitter, by education level
+<br/>
+Wait, there is a another social media, for which we have data! Let’s have a look at Twitter! What do you think bachelor and graduate students’ usage of Twitter would be?</p>
+<p>To find out, we have to clean the data first.</p>
+<p>First, let’s turn <code>degree</code> from a character variable into a factor variable, in ascending order of years of education (Lt high school, High School, Junior college, Bachelor, Graduate).</p>
+<p>We then create a new variable, <code>bachelor_graduate</code>, that is <em>Yes</em> if the respondent has either a <code>Bachelor</code> or <code>Graduate</code> degree, in order to distinguish bachelor/graduate students from others.</p>
+<pre class="r"><code># #inspect distinct value of degree
+# gss %&gt;%
+#   select(degree) %&gt;%
+#   distinct(degree)
+
+gss_modify &lt;- gss %&gt;%
+  
+  # make degree a factor with the right ordering
+  mutate(degree = factor(degree,level=c(&quot;Lt high school&quot;,
+                                        &quot;High school&quot;,
+                                        &quot;Junior college&quot;,
+                                        &quot;Bachelor&quot;,
+                                        &quot;Graduate&quot;)),
+         
+         # create bachelor_graduate variable
+         bachelor_graduate = case_when(degree %in% c(&quot;Bachelor&quot;,&quot;Graduate&quot;) ~ &quot;Yes&quot;,
+                                       is.na(degree) ~ NA_character_,
+                                       TRUE ~ &quot;No&quot;)
+         )</code></pre>
+<p><br/></p>
+<p>Third, let’s calculate the overall proportion of Twitter users:</p>
+<pre class="r"><code>gss_modify %&gt;% 
+  
+  # drop observations that miss information
+  drop_na(c(bachelor_graduate,twitter)) %&gt;% 
+  
+  # calculate overall Twitter proportion
+  summarise(`people who use Twitter` = count(twitter == &quot;Yes&quot;),
+            
+            `people who don&#39;t use Twitter` = count(twitter == &quot;No&quot;),
+            
+            `proportion of those who use Twitter` = `people who use Twitter` / (`people who use Twitter` + `people who don&#39;t use Twitter`),
+            
+            `proportion of those who don&#39;t use Twitter` = 1 - `proportion of those who use Twitter`) %&gt;%
+  
+  # have a nice HTML table
+  kbl(caption = &quot;Overall Proportion of Twitter users&quot;) %&gt;%
+  kable_styling(bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;, &quot;condensed&quot;, &quot;responsive&quot;)) </code></pre>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<caption>
+(#tab:bachelor_graduate_prop_2)Overall Proportion of Twitter users
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+people who use Twitter
+</th>
+<th style="text-align:right;">
+people who don’t use Twitter
+</th>
+<th style="text-align:right;">
+proportion of those who use Twitter
+</th>
+<th style="text-align:right;">
+proportion of those who don’t use Twitter
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+255
+</td>
+<td style="text-align:right;">
+1116
+</td>
+<td style="text-align:right;">
+0.186
+</td>
+<td style="text-align:right;">
+0.814
+</td>
+</tr>
+</tbody>
+</table>
+<p><br/>
+Let’s now bring in our newly created variable <code>bachelor_graduate</code> and see how Twitter usage varies between those with a degree vs those without a degree:</p>
+<pre class="r"><code>gss_modify %&gt;% 
+  # drop observations that miss information
+  drop_na(c(bachelor_graduate,twitter)) %&gt;%
+  
+  # group by bachelor_graduate and calculate proportions of Twitter users
+  group_by(bachelor_graduate) %&gt;% 
+  
+  # have a readable name
+  rename(`have a higher educational degree?` = bachelor_graduate) %&gt;% 
+  
+  summarise(`people who use Twitter` = count(twitter == &quot;Yes&quot;),
+            
+            `people who don&#39;t use Twitter` = count(twitter == &quot;No&quot;),
+            
+            `proportion of those who use Twitter` = `people who use Twitter` / (`people who use Twitter` + `people who don&#39;t use Twitter`),
+            
+            `proportion of those who don&#39;t use Twitter` = 1 - `proportion of those who use Twitter`) %&gt;%
+  
+  # have a nice HTML table
+  kbl(caption = &quot;Overall Proportion of Twitter users by education level&quot;) %&gt;%
+  kable_styling(bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;, &quot;condensed&quot;, &quot;responsive&quot;)) </code></pre>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<caption>
+(#tab:bachelor_graduate_prop)Overall Proportion of Twitter users by education level
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+have a higher educational degree?
+</th>
+<th style="text-align:right;">
+people who use Twitter
+</th>
+<th style="text-align:right;">
+people who don’t use Twitter
+</th>
+<th style="text-align:right;">
+proportion of those who use Twitter
+</th>
+<th style="text-align:right;">
+proportion of those who don’t use Twitter
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+141
+</td>
+<td style="text-align:right;">
+741
+</td>
+<td style="text-align:right;">
+0.160
+</td>
+<td style="text-align:right;">
+0.840
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+114
+</td>
+<td style="text-align:right;">
+375
+</td>
+<td style="text-align:right;">
+0.233
+</td>
+<td style="text-align:right;">
+0.767
+</td>
+</tr>
+</tbody>
+</table>
+<p><br/>
+We see that students with a degree use Twitter more. But how about the confidence intervals?</p>
+<p>Using the CI formula for proportions, let’s construct two 95% CIs for <code>bachelor_graduate</code> vs whether they use (Yes) and don’t (No) use twitter.</p>
+<pre class="r"><code>bachelor_graduate_formula_ci &lt;- gss_modify %&gt;%
+  
+  # drop observations that miss information
+  drop_na(c(bachelor_graduate, twitter)) %&gt;% 
+  
+  # group by bachelor_graduate and calculate CIs
+  group_by(bachelor_graduate) %&gt;% 
+  
+  # Confidence Interval = p  +/-  z*(√p(1-p) / n)
+  summarise(`proportion of twitter users` = count(twitter == &quot;Yes&quot;) / count(twitter %in% c(&quot;Yes&quot;,&quot;No&quot;)),
+            
+            z_critical = qnorm(0.975),
+            
+            count = n(),
+            
+            se_proportion = sqrt((`proportion of twitter users`*(1-`proportion of twitter users`))/count),
+            
+            margin_of_error = z_critical * se_proportion,
+            
+            `lower CI bound` = `proportion of twitter users` - margin_of_error,
+            
+            `upper CI bound` = `proportion of twitter users` + margin_of_error)
+
+# print out CIs
+bachelor_graduate_formula_ci %&gt;%
+  # only show relevant columns
+  select(bachelor_graduate, `lower CI bound`, `proportion of twitter users`, `upper CI bound`) %&gt;% 
+  
+  # have readable names
+  rename(`have a higher educational degree?` = bachelor_graduate) %&gt;% 
+  
+  # have a nice HTML table
+  kbl(caption = &quot;Confidence Intervals for Twitter usage&quot;) %&gt;%
+  kable_styling(bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;, &quot;condensed&quot;, &quot;responsive&quot;)) </code></pre>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<caption>
+(#tab:bachelor_graduate_ci)Confidence Intervals for Twitter usage
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+have a higher educational degree?
+</th>
+<th style="text-align:right;">
+lower CI bound
+</th>
+<th style="text-align:right;">
+proportion of twitter users
+</th>
+<th style="text-align:right;">
+upper CI bound
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+0.136
+</td>
+<td style="text-align:right;">
+0.160
+</td>
+<td style="text-align:right;">
+0.184
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+0.196
+</td>
+<td style="text-align:right;">
+0.233
+</td>
+<td style="text-align:right;">
+0.271
+</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code># plot CIs
+ggplot(bachelor_graduate_formula_ci, aes(y=bachelor_graduate, 
+                                         x = `proportion of twitter users`, 
+                                         group = bachelor_graduate, 
+                                         color=bachelor_graduate)) +
+  
+  #draws the means
+  geom_point(size = 5) +
+  
+  #draws the CI error bars
+  geom_errorbar(aes(xmin=`lower CI bound`, xmax=`upper CI bound`), width=.1, size = 2) +
+  
+  theme_bw() +
+  
+  theme(legend.position = &quot;none&quot;) +
+  
+  labs(y = &quot;have a higher educational degree?&quot;,
+       x = &quot;Proportion of Twitter users&quot;,
+       title = &quot;People with a higher education degree use Twitter more!&quot;)</code></pre>
+<p><img src="/blog/2-General-Social-Survey_files/figure-html/bachelor_graduate_ci-1.png" width="648" style="display: block; margin: auto;" />
+<br/>
+The confidence interval for the proportion of Twitter usage is [13.6%, 18.4%] for those who do not have a degree, vs [19.6%, 27.1%] for thos who have a degree. They do not overlap.</p>
+<p>Obviously, more bachelor/graduate student are using Twitter! Are you the majority?</p>
+</div>
