@@ -11,13 +11,13 @@ tab1Target: education
 tab2Target: experience
 
 education:
-  - title: Master of Science in Analytics and Management, London Business School
+  - title: MSc in Analytics and Management， London Business School
     content: The MAM program focuses on the point where business, data, and machine learning intersect. Core courses include Analytics & Data Science, and General Management.
     time: 2020-2021/2022
-  - title: Bachelor of Business Administration in Entrepreneurship and Technology, Exchange at UC Berkeley Haas
+  - title: BBA in Entrepreneurship and Technology, Exchange Student at UC Berkeley Haas
     content: Through the Berkeley Haas Global Access Program (BHGAP), top-qualifying international students from both business and non-business backgrounds gain the knowledge, skills and connections necessary to excel as tomorrow's innovators and global leaders. 
     time: 2019
-  - title: Bachelor of Business Administration in Accounting, Beijing Foreign Studies University
+  - title: BBA in Accounting, Beijing Foreign Studies University
     content: Relevant courses include Math, Programming, Analytics, Accounting, Finance, Economics, Management, Marketing and Languages (English, Hebrew).
     time: 2016-2020
   - title: High School Diploma in Science, Xiamen No.1 High School of Fujian
