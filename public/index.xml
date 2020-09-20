@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Portio</title>
+    <title>Lujia Huang</title>
     <link>/</link>
-    <description>Recent content on Portio</description>
+    <description>Recent content on Lujia Huang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 11 Sep 2020 00:00:00 +0000</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Fri, 11 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>/blog/3-gdp-components-over-time-and-among-countries/</guid>
-      <description>Team members: Noor Alameri, Brigita Angkasa, Lujia Huang, Martino Armanini, Marco Laube, Deniz Oezdemir
+      <description>Team members: Noor Alameri, Brigita Angkasa, Lujia Huang, Martino Armanini, Marco Laube, Deniz Özdemir
 Source: Homework 3 for Applied Statistics with R by Kostis @ London Business School
 Key Words: skim, glimpse, ggplot, summarise, mutate, pivot_longer
 GDP components over time and among countriesAt the risk of oversimplifying things, the main components of gross domestic product, GDP are personal consumption (C), business investment (I), government spending (G) and net exports (exports - imports).</description>
@@ -29,7 +29,7 @@ GDP components over time and among countriesAt the risk of oversimplifying thi
       <pubDate>Fri, 11 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>/blog/2-general-social-survey/</guid>
-      <description>Team members: Noor Alameri, Brigita Angkasa, Lujia Huang, Martino Armanini, Marco Laube, Deniz Oezdemir
+      <description>Team members: Noor Alameri, Brigita Angkasa, Lujia Huang, Martino Armanini, Marco Laube, Deniz Özdemir
 Source: Homework 2 for Applied Statistics with R by Kostis @ London Business School
 Key Words: skim, glimpse, ggplot, summarise, mutate, geom_errorbar, confidence intervals
 General Social Survey (GSS)The General Social Survey (GSS) gathers data on American society in order to monitor and explain trends in attitudes, behaviours, and attributes. Many trends have been tracked for decades, so one can see the evolution of attitudes, etc in American Society.</description>
@@ -41,41 +41,10 @@ General Social Survey (GSS)The General Social Survey (GSS) gathers data on Ame
       <pubDate>Fri, 04 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>/blog/1-alcohol-consumption-in-different-countries/</guid>
-      <description>Team members: Noor Alameri, Brigita Angkasa, Lujia Huang, Martino Armanini, Marco Laube, Deniz Oezdemir
+      <description>Team members: Noor Alameri, Brigita Angkasa, Lujia Huang, Martino Armanini, Marco Laube, Deniz Özdemir
 Source: Homework 1 for Applied Statistics with R by Kostis @ London Business School
 Key Words: skim, glimpse, ggplot
 Where Do People Drink The Most Beer, Wine And Spirits?Back in 2014, fivethiryeight.com published an article on alcohol consumption in different countries. The data drinks is available as part of the fivethirtyeight package. Let’s load the data and have a look!</description>
-    </item>
-    
-    <item>
-      <title>Draft - Homework 1</title>
-      <link>/blog/homework1-f/</link>
-      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/homework1-f/</guid>
-      <description>Where Do People Drink The Most Beer, Wine And Spirits?Back in 2014, fivethiryeight.com published an article on alcohol consumption in different countries. The data drinks is available as part of the fivethirtyeight package. Let’s load the data and have a look!
-library(fivethirtyeight)data(drinks)To get an idea of what the data is like, we use glimpse and skim. Furthermore, we can use ?drinks to get some more meta information.</description>
-    </item>
-    
-    <item>
-      <title>Draft - Homework 2</title>
-      <link>/blog/homework2/</link>
-      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/homework2/</guid>
-      <description>Climate change and temperature anomaliesWe want to study climate change and gratefully find data on the Combined Land-Surface Air and Sea-Surface Water Temperature Anomalies in the Northern Hemisphere at NASA’s Goddard Institute for Space Studies. The tabular data of temperature anomalies can be found here.
-To define temperature anomalies, we need to have a reference, or base period, which NASA clearly states that it is the period between 1951-1980.</description>
-    </item>
-    
-    <item>
-      <title>Draft - Homework 3</title>
-      <link>/blog/homework3/</link>
-      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/homework3/</guid>
-      <description>Youth Risk Behavior SurveillanceEvery two years, the Centers for Disease Control and Prevention conduct the Youth Risk Behavior Surveillance System (YRBSS) survey, where it takes data from high schoolers (9th through 12th grade), to analyze health patterns.
-We will work with a selected group of variables from a random sample of observations during one of the years the YRBSS was conducted.
-Load the dataThis data is part of the openintro textbook and we can directly load and inspect it:</description>
     </item>
     
     <item>
